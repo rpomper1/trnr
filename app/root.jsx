@@ -3,11 +3,15 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
+  ScrollRestoration
 } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+import stylesheet from "./tailwind.css";
+
+export const links = () => [{ rel: "stylesheet", href: stylesheet }];
+
+export function Layout({ children }) {
   return (
     <html lang="en">
       <head>
