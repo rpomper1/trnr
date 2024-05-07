@@ -7,7 +7,7 @@ import {
 } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
 
-import stylesheet from "./tailwind.css";
+import stylesheet from "~/tailwind.css";
 
 export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 
