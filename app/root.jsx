@@ -24,9 +24,9 @@ export function Layout({ children }) {
       </head>
       <body>
         <NextUIProvider>
-          <div className="min-h-screen flex flex-col items-center gap-5">
+          <div className="min-h-screen flex flex-col items-center gap-5 bg-slate-50">
             <CustomNavbar />
-            <div className=" max-w-[1024px]">{children}</div>
+            <div className=" max-w-[1024px] w-screen">{children}</div>
           </div>
           <ScrollRestoration />
           <Scripts />

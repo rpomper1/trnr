@@ -28,17 +28,17 @@ export default function Index() {
   return (
     <div
       style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}
-      className="w-full max-w-[1024px] mx-auto p-5"
+      className="w-screen max-w-[1024px] mx-auto p-4"
     >
-      <Card className="max-w-[1024px] w-screen">
-        <CardHeader className="flex gap-3">
-          <h1 className="">Pitanja</h1>
+      <Card className="max-w-[1024px] w-full">
+        <CardHeader className="flex gap-3 p-4">
+          <h1 className="text-2xl font-semibold">Pitanja</h1>
         </CardHeader>
         <Divider />
         <CardBody className="flex flex-col gap-10 p-10">
           <div className="flex flex-col gap-4">
             <h2>1. Odaberite Vaš spol</h2>
-            <RadioGroup orientation="horizontal" className="ps-6">
+            <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
               <Radio className="me-2" value="male">
                 Žensko
               </Radio>
@@ -50,9 +50,42 @@ export default function Index() {
               </Radio>
             </RadioGroup>
           </div>
+          <Divider />
           <div className="flex flex-col gap-4">
             <h2>2. Kakav tip kose imate</h2>
-            <CheckboxGroup orientation="horizontal" className="ps-6">
+            <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Checkbox className="me-2" value="natural">
+                Prirodna
+              </Checkbox>
+              <Checkbox className="me-2" value="damaged">
+                Ispucala
+              </Checkbox>
+              <Checkbox className="me-2" value="bleached">
+                Blajhana
+              </Checkbox>
+            </CheckboxGroup>
+          </div>
+          <Divider />
+
+          <div className="flex flex-col gap-4">
+            <h2>2. Kakav tip kose imate</h2>
+            <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Checkbox className="me-2" value="natural">
+                Prirodna
+              </Checkbox>
+              <Checkbox className="me-2" value="damaged">
+                Ispucala
+              </Checkbox>
+              <Checkbox className="me-2" value="bleached">
+                Blajhana
+              </Checkbox>
+            </CheckboxGroup>
+          </div>
+          <Divider />
+
+          <div className="flex flex-col gap-4">
+            <h2>2. Kakav tip kose imate</h2>
+            <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
               <Checkbox className="me-2" value="natural">
                 Prirodna
               </Checkbox>

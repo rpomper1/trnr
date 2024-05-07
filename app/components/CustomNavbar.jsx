@@ -13,11 +13,12 @@ export default function CustomNavbar() {
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
-        <p className="font-bold text-inherit">Henkel</p>
+        <p className="font-bold text-inherit text-2xl">Henkel</p>
       </NavbarBrand>
       <NavbarContent className="flex gap-4" justify="center">
         <NavbarItem isActive={location.pathname === "/"}>
           <Link
+            className="text-lg"
             color={location.pathname === "/" ? "primary" : "foreground"}
             href="/"
             aria-current={location.pathname === "/" ? "page" : "false"}
@@ -27,6 +28,7 @@ export default function CustomNavbar() {
         </NavbarItem>
         <NavbarItem isActive={location.pathname === "/o-nama"}>
           <Link
+            className="text-lg"
             color={location.pathname === "/o-nama" ? "primary" : "foreground"}
             href="o-nama"
             aria-current={location.pathname === "/o-nama" ? "page" : "false"}

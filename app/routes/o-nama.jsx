@@ -1,13 +1,8 @@
 export default function AboutUsPage() {
   return (
-    <div>
-      <h1>About Us</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </p>
+    <div className="flex flex-col gap-5 p-6 leading-8 text-start items-start">
+      <h1 className="text-2xl font-semibold">Tko smo mi?</h1>
+      <p>Mi smo fakultet btj.</p>
     </div>
   );
 }
