@@ -9,6 +9,7 @@ import {
 import { Analytics } from "@vercel/analytics/react";
 
 import stylesheet from "~/tailwind.css?url";
+import CustomNavbar from "./components/CustomNavbar";
 
 export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 
@@ -23,7 +24,10 @@ export function Layout({ children }) {
       </head>
       <body>
         <NextUIProvider>
-          {children}
+          <div className="min-h-screen flex flex-col">
+            <CustomNavbar />
+            {children}
+          </div>
           <ScrollRestoration />
           <Scripts />
           <Analytics />

@@ -9,8 +9,6 @@ import {
   Image,
   Link
 } from "@nextui-org/react";
-import React from "react";
-import CustomNavbar from "~/components/CustomNavbar";
 
 export const meta = () => {
   return [
@@ -25,7 +23,6 @@ export default function Index() {
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <CustomNavbar />
       <h1 className="text-slate-400">Welcome to Henkel</h1>
       <Card className="max-w-[400px]">
         <CardHeader className="flex gap-3">
