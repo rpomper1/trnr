@@ -1,3 +1,4 @@
+import { NextUIProvider } from "@nextui-org/react";
 import {
   Links,
   Meta,
@@ -7,7 +8,7 @@ import {
 } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
 
-import stylesheet from "~/tailwind.css";
+import stylesheet from "~/tailwind.css?url";
 
 export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 
@@ -21,10 +22,12 @@ export function Layout({ children }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-        <Analytics />
+        <NextUIProvider>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+          <Analytics />
+        </NextUIProvider>
       </body>
     </html>
   );
