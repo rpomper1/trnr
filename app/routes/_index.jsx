@@ -30,7 +30,7 @@ export default function Index() {
       style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}
       className="w-full max-w-[1024px] mx-auto p-5"
     >
-      <Card className="w-[1024px]">
+      <Card className="max-w-[1024px] w-screen">
         <CardHeader className="flex gap-3">
           <h1 className="">Pitanja</h1>
         </CardHeader>
