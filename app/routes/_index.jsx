@@ -10,6 +10,7 @@ import {
   Radio,
   RadioGroup
 } from "@nextui-org/react";
+import CustomSlider from "~/components/CustomSlider";
 
 export const meta = () => {
   return [
@@ -39,72 +40,182 @@ export default function Index() {
               <Radio className="me-2" value="female">
                 Muško
               </Radio>
-              <Radio className="me-2" value="other">
-                Ostalo
+            </RadioGroup>
+          </div>
+          <Divider />
+          <div className="flex flex-col gap-4">
+            <h2>2. Kakvog tipa je vaše vlasište?</h2>
+            <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Radio className="me-2" value="dry">
+                Vrlo suho
+              </Radio>
+              <Radio className="me-2" value="dry-normal">
+                Suho-normalno
+              </Radio>
+              <Radio className="me-2" value="normal">
+                Normalno
+              </Radio>
+              <Radio className="me-2" value="normal-oily">
+                Normalno-masno
+              </Radio>
+              <Radio className="me-2" value="oily">
+                Vrlo masno
               </Radio>
             </RadioGroup>
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
-            <h2>2. Kakav tip kose imate</h2>
+            <h2>3. Koje dužine je vaša kosa trenutno?</h2>
+            <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Radio className="me-2" value="short">
+                Kratka
+              </Radio>
+              <Radio className="me-2" value="medium">
+                Srednja
+              </Radio>
+              <Radio className="me-2" value="long">
+                Duga
+              </Radio>
+            </RadioGroup>
+          </div>
+          <Divider />
+          <div className="flex flex-col gap-4">
+            <h2>4. Što najbolje opisuje Vaš tip kose?</h2>
+            <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Radio className="me-2" value="straight">
+                Ravna
+              </Radio>
+              <Radio className="me-2" value="wavy">
+                Valovita
+              </Radio>
+              <Radio className="me-2" value="curly">
+                Frčkava
+              </Radio>
+            </RadioGroup>
+          </div>
+          <Divider />
+          <div className="flex flex-col gap-4">
+            <h2>5. Je li Vaša kosa ikada bila tretirana?</h2>
             <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
-              <Checkbox className="me-2" value="natural">
-                Prirodna
+              <Checkbox className="me-2 mb-2" value="0">
+                Nikada nisam farbao/la kosu
               </Checkbox>
-              <Checkbox className="me-2" value="damaged">
-                Ispucala
+              <Checkbox className="me-2 mb-2" value="1">
+                Farbao/la sam kosu farbama iz dućana
               </Checkbox>
-              <Checkbox className="me-2" value="bleached">
-                Blajhana
+              <Checkbox className="me-2 mb-2" value="2">
+                Farbao/la sam kosu profesionalno u salonu
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="3">
+                Koristio/la sam blajh za kosu sam/sama
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="4">
+                Blajhao/la sam kosu profesionalno u salonu
               </Checkbox>
             </CheckboxGroup>
           </div>
           <Divider />
-
           <div className="flex flex-col gap-4">
-            <h2>2. Kakav tip kose imate</h2>
+            <h2>6. Koliko puta je Vaša kosa bila tretirana farbama/blajhom?</h2>
+            <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Radio className="me-2" value="0">
+                Nikada
+              </Radio>
+              <Radio className="me-2" value="1">
+                1-3 puta
+              </Radio>
+              <Radio className="me-2" value="2">
+                3-6 puta
+              </Radio>
+              <Radio className="me-2" value="3">
+                Više od 6 puta
+              </Radio>
+            </RadioGroup>
+          </div>
+          <Divider />
+          <div className="flex flex-col gap-4">
+            <h2>7. Koliko puta tjedno u prosjeku perete svoju kosu?</h2>
+            <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Radio className="me-2" value="0">
+                1 put
+              </Radio>
+              <Radio className="me-2" value="1">
+                2-3 puta
+              </Radio>
+              <Radio className="me-2" value="2">
+                3-5 puta
+              </Radio>
+              <Radio className="me-2" value="3">
+                Svaki dan
+              </Radio>
+            </RadioGroup>
+          </div>
+          <Divider />
+          <div className="flex flex-col gap-4">
+            <h2>
+              8. Odaberite karakteristike koje najbolje opisuju Vaš tip kose.
+            </h2>
             <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
-              <Checkbox className="me-2" value="natural">
-                Prirodna
+              <Checkbox className="me-2 mb-2" value="0">
+                Oštećeni i suhi vrhovi
               </Checkbox>
-              <Checkbox className="me-2" value="damaged">
-                Ispucala
+              <Checkbox className="me-2 mb-2" value="1">
+                Sklona ispucalim vrhovima
               </Checkbox>
-              <Checkbox className="me-2" value="bleached">
-                Blajhana
+              <Checkbox className="me-2 mb-2" value="2">
+                Masna
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="3">
+                Gusta
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="4">
+                Rijetka
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="5">
+                Tanka i slaba
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="6">
+                Slamnata
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="7">
+                Obojana
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="8">
+                Plava
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="9">
+                Normalna
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="10">
+                Bez volumena
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="11">
+                Sadrži perut
+              </Checkbox>
+              <Checkbox className="me-2 mb-2" value="12">
+                Sijeda
               </Checkbox>
             </CheckboxGroup>
           </div>
           <Divider />
-
           <div className="flex flex-col gap-4">
-            <h2>2. Kakav tip kose imate</h2>
+            <h2>9. Koji je Vaš traženi proizvod?</h2>
             <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
-              <Checkbox className="me-2" value="natural">
-                Prirodna
+              <Checkbox className="me-2 mb-2" value="0">
+                Šampon
               </Checkbox>
-              <Checkbox className="me-2" value="damaged">
-                Ispucala
+              <Checkbox className="me-2 mb-2" value="1">
+                Regenerator
               </Checkbox>
-              <Checkbox className="me-2" value="bleached">
-                Blajhana
+              <Checkbox className="me-2 mb-2" value="2">
+                Tretman (maska, ulje, serum i ostalo)
               </Checkbox>
             </CheckboxGroup>
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
-            <h2>2. Kakav tip kose imate</h2>
-            <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
-              <Checkbox className="me-2" value="natural">
-                Prirodna
-              </Checkbox>
-              <Checkbox className="me-2" value="damaged">
-                Ispucala
-              </Checkbox>
-              <Checkbox className="me-2" value="bleached">
-                Blajhana
-              </Checkbox>
-            </CheckboxGroup>
+            <h2>10. Koliko biste bili spremni dati za taj proizvod?</h2>
+            <CustomSlider />
           </div>
         </CardBody>
         <Divider />
