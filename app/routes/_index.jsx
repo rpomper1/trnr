@@ -44,7 +44,7 @@ export default function Index() {
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
-            <h2>2. Kakvog tipa je vaše vlasište?</h2>
+            <h2>2. Kakvog tipa je Vaše vlasište?</h2>
             <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
               <Radio className="me-2" value="dry">
                 Vrlo suho
@@ -65,7 +65,7 @@ export default function Index() {
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
-            <h2>3. Koje dužine je vaša kosa trenutno?</h2>
+            <h2>3. Koje dužine je Vaša kosa trenutno?</h2>
             <RadioGroup orientation="horizontal" className="ps-2 md:ps-6">
               <Radio className="me-2" value="short">
                 Kratka
@@ -92,6 +92,10 @@ export default function Index() {
                 Frčkava
               </Radio>
             </RadioGroup>
+            <span className="ps-2 md:ps-6 text-gray-500 italic font text-sm">
+              *Kratkom kosom se smatra kosa do 10cm (do ušiju), srednja kosa
+              10-25cm (do ramena), a duga kosa preko 25cm (ispod ramena).
+            </span>
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
@@ -214,7 +218,10 @@ export default function Index() {
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
-            <h2>10. Koliko biste bili spremni dati za taj proizvod?</h2>
+            <h2>
+              10. Koliko biste bili spremni platiti za traženi
+              proizvod/proizvode?
+            </h2>
             <CustomSlider />
           </div>
         </CardBody>
