@@ -3,24 +3,27 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button
+  // Link,
+  Image
 } from "@nextui-org/react";
-import { useLocation } from "@remix-run/react";
+import logo from "/img/henkel-logo.svg";
+import { Link, useLocation } from "@remix-run/react";
 
 export default function CustomNavbar() {
   const location = useLocation();
   return (
-    <Navbar shouldHideOnScroll>
+    <Navbar shouldHideOnScroll className="bg-white shadow-sm">
       <NavbarBrand>
-        <p className="font-bold text-inherit text-2xl">Henkel</p>
+        <Image src={logo} alt="logo" width={80} />
       </NavbarBrand>
       <NavbarContent className="flex gap-4" justify="center">
         <NavbarItem isActive={location.pathname === "/"}>
           <Link
-            className="text-lg"
-            color={location.pathname === "/" ? "primary" : "foreground"}
-            href="/"
+            className={
+              "text-lg" +
+              (location.pathname === "/" ? " text-primary" : " text-foreground")
+            }
+            to="/"
             aria-current={location.pathname === "/" ? "page" : "false"}
           >
             Procjena
@@ -28,9 +31,13 @@ export default function CustomNavbar() {
         </NavbarItem>
         <NavbarItem isActive={location.pathname === "/o-nama"}>
           <Link
-            className="text-lg"
-            color={location.pathname === "/o-nama" ? "primary" : "foreground"}
-            href="o-nama"
+            className={
+              "text-lg" +
+              (location.pathname === "/o-nama"
+                ? " text-primary"
+                : " text-foreground")
+            }
+            to="/o-nama"
             aria-current={location.pathname === "/o-nama" ? "page" : "false"}
           >
             O nama

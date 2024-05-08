@@ -4,16 +4,22 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useNavigate
 } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
 
 import stylesheet from "~/tailwind.css?url";
+import rootStylesheet from "~/root.css?url";
 import CustomNavbar from "./components/CustomNavbar";
 
-export const links = () => [{ rel: "stylesheet", href: stylesheet }];
+export const links = () => [
+  { rel: "stylesheet", href: stylesheet },
+  { rel: "stylesheet", href: rootStylesheet }
+];
 
 export function Layout({ children }) {
+  const navigate = useNavigate();
   return (
     <html lang="en">
       <head>
@@ -22,11 +28,13 @@ export function Layout({ children }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        <NextUIProvider>
-          <div className="min-h-screen flex flex-col items-center gap-5 bg-slate-50">
+      <body className="no-scrollbar">
+        <NextUIProvider className="scrollbar-hide" navigate={navigate}>
+          <div className="min-h-screen flex flex-col items-center gap-5 bg-slate-50 scrollbar-hide">
             <CustomNavbar />
-            <div className=" max-w-[1024px] w-screen">{children}</div>
+            <div className="scrollbar-hide max-w-[1024px] w-screen">
+              {children}
+            </div>
           </div>
           <ScrollRestoration />
           <Scripts />

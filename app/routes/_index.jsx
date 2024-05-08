@@ -1,6 +1,4 @@
 import {
-  Accordion,
-  AccordionItem,
   Button,
   Card,
   CardBody,
@@ -9,7 +7,6 @@ import {
   Checkbox,
   CheckboxGroup,
   Divider,
-  Link,
   Radio,
   RadioGroup
 } from "@nextui-org/react";
@@ -22,13 +19,10 @@ export const meta = () => {
 };
 
 export default function Index() {
-  const defaultContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
   return (
     <div
       style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}
-      className="w-screen max-w-[1024px] mx-auto p-4"
+      className=" scrollbar-hide w-screen max-w-[1024px] mx-auto p-4"
     >
       <Card className="max-w-[1024px] w-full">
         <CardHeader className="flex gap-3 p-4">
@@ -97,10 +91,25 @@ export default function Index() {
               </Checkbox>
             </CheckboxGroup>
           </div>
+          <Divider />
+          <div className="flex flex-col gap-4">
+            <h2>2. Kakav tip kose imate</h2>
+            <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
+              <Checkbox className="me-2" value="natural">
+                Prirodna
+              </Checkbox>
+              <Checkbox className="me-2" value="damaged">
+                Ispucala
+              </Checkbox>
+              <Checkbox className="me-2" value="bleached">
+                Blajhana
+              </Checkbox>
+            </CheckboxGroup>
+          </div>
         </CardBody>
         <Divider />
-        <CardFooter>
-          <Button color="primary" auto>
+        <CardFooter className="flex justify-end">
+          <Button color="primary" auto size="lg">
             Pošalji
           </Button>
         </CardFooter>
