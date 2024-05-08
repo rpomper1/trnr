@@ -77,6 +77,10 @@ export default function Index() {
                 Duga
               </Radio>
             </RadioGroup>
+            <span className="ps-2 md:ps-6 text-gray-500 italic font text-sm">
+              *Kratkom kosom se smatra kosa do 10cm (do ušiju), srednja kosa
+              10-25cm (do ramena), a duga kosa preko 25cm (ispod ramena).
+            </span>
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
@@ -92,10 +96,6 @@ export default function Index() {
                 Frčkava
               </Radio>
             </RadioGroup>
-            <span className="ps-2 md:ps-6 text-gray-500 italic font text-sm">
-              *Kratkom kosom se smatra kosa do 10cm (do ušiju), srednja kosa
-              10-25cm (do ramena), a duga kosa preko 25cm (ispod ramena).
-            </span>
           </div>
           <Divider />
           <div className="flex flex-col gap-4">
