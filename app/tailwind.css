@@ -4,3 +4,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.product img {
+  width: 8rem;
+}
+
+@media screen and (max-width: 640px) {
+  .product img {
+    width: 6rem;
+  }
+}

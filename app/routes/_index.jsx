@@ -233,13 +233,13 @@ export default function Index() {
           </Button>
         </CardFooter>
       </Card>
-      <Card>
+      <Card className="p-2 my-2">
         <CardHeader>
           <h1 className="text-2xl font-semibold">Naši preporučeni proizvodi</h1>
         </CardHeader>
-        <CardBody>
+        <CardBody className="mt-2">
           {henkel_products.map((item) => (
-            <Product key={item.id} product={item} />
+            <Product key={item.id} product={item} className="my-5" />
           ))}
         </CardBody>
       </Card>
