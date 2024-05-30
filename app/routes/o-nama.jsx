@@ -20,12 +20,32 @@ export default function AboutUsPage() {
         jedan od zadataka ovog timskog projekta.
       </p>
       <h2 className="text-xl font-semibold">Članovi tima:</h2>
-      <div className="flex flex-row justify-center flex-wrap gap-20">
-        <User name="Martina Pintarić" description="0067664309" />
-        <User name="Paula Pejić Bach" description="0067657071" />
-        <User name="Jelena Pavlinović" description="0067670745" />
-        <User name="Luka Pavlović" description="0067668376" />
-        <User name="Toni Petrov" description="0067658789" />
+      <div className="flex flex-col md:flex-row gap-10 md:gap-15 items-start md:justify-center">
+        <User
+          name="Martina Pintarić"
+          description="0067664309"
+          avatarProps={{ name: "MP", size: "xl" }}
+        />
+        <User
+          name="Paula Pejić Bach"
+          description="0067657071"
+          avatarProps={{ name: "PPB", size: "xl" }}
+        />
+        <User
+          name="Jelena Pavlinović"
+          description="0067670745"
+          avatarProps={{ name: "JP", size: "xl" }}
+        />
+        <User
+          name="Luka Pavlović"
+          description="0067668376"
+          avatarProps={{ name: "LP", size: "xl" }}
+        />
+        <User
+          name="Toni Petrov"
+          description="0067658789"
+          avatarProps={{ name: "TP", size: "xl" }}
+        />
       </div>
     </div>
   );
