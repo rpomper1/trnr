@@ -11,7 +11,8 @@ import {
   RadioGroup
 } from "@nextui-org/react";
 import CustomSlider from "~/components/CustomSlider";
-
+import Product from "~/components/Product";
+import henkel_products from "~/data";
 export const meta = () => {
   return [
     { title: "New Remix App" },
@@ -202,7 +203,7 @@ export default function Index() {
             </CheckboxGroup>
           </div>
           <Divider />
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <h2>9. Koji je Vaš traženi proizvod?</h2>
             <CheckboxGroup orientation="horizontal" className="ps-2 md:ps-6">
               <Checkbox className="me-2 mb-2" value="0">
@@ -216,7 +217,7 @@ export default function Index() {
               </Checkbox>
             </CheckboxGroup>
           </div>
-          <Divider />
+          <Divider /> */}
           <div className="flex flex-col gap-4">
             <h2>
               10. Koliko biste bili spremni platiti za traženi
@@ -231,6 +232,16 @@ export default function Index() {
             Pošalji
           </Button>
         </CardFooter>
+      </Card>
+      <Card>
+        <CardHeader>
+          <h1 className="text-2xl font-semibold">Naši preporučeni proizvodi</h1>
+        </CardHeader>
+        <CardBody>
+          {henkel_products.map((item) => (
+            <Product key={item.id} product={item} />
+          ))}
+        </CardBody>
       </Card>
     </div>
   );

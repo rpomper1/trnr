@@ -5,10 +5,10 @@ export default function CustomSlider() {
     <Slider
       label="Cijenovni raspon"
       aria-label="Price range"
-      step={10}
-      maxValue={200}
+      step={0.5}
+      maxValue={10}
       minValue={0}
-      defaultValue={[30, 100]}
+      defaultValue={[0, 10]}
       showSteps={true}
       showTooltip={true}
       showOutline={true}
@@ -17,7 +17,7 @@ export default function CustomSlider() {
       tooltipValueFormatOptions={{
         style: "currency",
         currency: "EUR",
-        maximumFractionDigits: 0
+        maximumFractionDigits: 2
       }}
       classNames={{
         base: "max-w-md",
