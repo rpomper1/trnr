@@ -24,7 +24,6 @@ export const meta = () => {
 };
 
 export async function action({ request }) {
-  debugger;
   const formData = await request.formData();
   console.log("formData", formData);
   const hairCharacteristics = formData.getAll("hairCharacteristics");
@@ -42,17 +41,22 @@ export async function action({ request }) {
     maxPrice: parseFloat(formData.get("maxPrice")) || 10
   };
   console.log("formData", data);
-  let products;
+  let products = henkel_products;
+  console.log("products", products);
 
   // Filtering by gender
-  products = henkel_products.filter((product) => {
-    return product.gender === data.gender;
-  });
+  if (data?.gender) {
+    products = products.filter((product) => {
+      return product.gender === data.gender;
+    });
+  }
 
   // Filtering by price
-  products = products.filter((product) => {
-    return product.price <= data.maxPrice;
-  });
+  if (data?.maxPrice) {
+    products = products.filter((product) => {
+      return product.price <= data.maxPrice;
+    });
+  }
 
   if (data?.hairType) {
     // Filtering by hair type
@@ -652,15 +656,7 @@ export default function Index() {
         className="flex justify-center"
         ref={productWrapperRef}
       >
-        {isLoading ? (
-          <Spinner
-            label="Dohvaćanje proizvoda..."
-            color="primary"
-            labelColor="primary"
-            size="xl"
-            className="min-h-[40vh]"
-          />
-        ) : (
+        {isLoading ? null : (
           <>
             {products && products.length > 0 && (
               <Card className="p-2 my-2 min-h-[100vh]">
