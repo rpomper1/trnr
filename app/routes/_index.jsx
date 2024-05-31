@@ -15,7 +15,7 @@ import {
 import { Form, useActionData } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import Product from "~/components/Product";
-import henkel_products from "~/data";
+import { filterProducts } from "~/utils/productUtils";
 export const meta = () => {
   return [
     { title: "Henkel" },
@@ -25,10 +25,6 @@ export const meta = () => {
 
 export async function action({ request }) {
   const formData = await request.formData();
-  console.log("formData", formData);
-  const hairCharacteristics = formData.getAll("hairCharacteristics");
-  console.log("hairCharacteristics", hairCharacteristics);
-  console.log("formData.entries", formData.get("hairTreatment"));
   const data = {
     gender: formData.get("gender") || null,
     scalpType: formData.get("scalpType") || null,
@@ -37,316 +33,12 @@ export async function action({ request }) {
     hairTreatment: formData.getAll("hairTreatment") || null,
     treatmentFrequency: formData.get("treatmentFrequency") || null,
     washFrequency: formData.get("washFrequency") || null,
-    hairCharacteristics: hairCharacteristics || null,
+    hairCharacteristics: formData.getAll("hairCharacteristics") || null,
     maxPrice: parseFloat(formData.get("maxPrice")) || 10
   };
+
   console.log("formData", data);
-  let products = henkel_products;
-  console.log("products", products);
-
-  // Filtering by gender
-  if (data?.gender) {
-    products = products.filter((product) => {
-      return product.gender === data.gender;
-    });
-  }
-
-  // Filtering by price
-  if (data?.maxPrice) {
-    products = products.filter((product) => {
-      return product.price <= data.maxPrice;
-    });
-  }
-
-  if (data?.hairType) {
-    // Filtering by hair type
-    products = products.filter((product) => {
-      if (!product.hairType) {
-        return true;
-      } else {
-        if (
-          product.hairTexture["straight"] === true &&
-          data.hairType === "straight"
-        ) {
-          return true;
-        }
-        if (product.hairTexture["wavy"] === true && data.hairType === "wavy") {
-          return true;
-        }
-        if (
-          product.hairTexture["curly"] === true &&
-          data.hairType === "curly"
-        ) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  if (data?.hairCharacteristics && data?.hairCharacteristics.length > 0) {
-    // Filtering by hair characteristics
-    products = products.filter((product) => {
-      if (!product.hairTypeCharacteristics) {
-        return true;
-      } else {
-        if (
-          product.hairTypeCharacteristics["damagedAndDriedEnds"] === true &&
-          data.hairCharacteristics.includes("damagedDryEnds")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["proneToSplitEnds"] === true &&
-          data.hairCharacteristics.includes("splitEnds")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["greasyHair"] === true &&
-          data.hairCharacteristics.includes("oily")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["thickHair"] === true &&
-          data.hairCharacteristics.includes("thick")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["thinHair"] === true &&
-          data.hairCharacteristics.includes("thin")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["thinAndWeakHair"] === true &&
-          data.hairCharacteristics.includes("thinWeak")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["strawHair"] === true &&
-          data.hairCharacteristics.includes("strawLike")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["coloredHair"] === true &&
-          data.hairCharacteristics.includes("colored")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["blondeHair"] === true &&
-          data.hairCharacteristics.includes("blonde")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["normalHair"] === true &&
-          data.hairCharacteristics.includes("normal")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["withoutVolume"] === true &&
-          data.hairCharacteristics.includes("noVolume")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["containsDandruff"] === true &&
-          data.hairCharacteristics.includes("dandruff")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTypeCharacteristics["grayHair"] === true &&
-          data.hairCharacteristics.includes("gray")
-        ) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  if (data?.hairTreatment && data.hairTreatment.length > 0) {
-    // Filtering by hair treatment
-    products = products.filter((product) => {
-      if (!product.hairTreatment) {
-        return true;
-      } else {
-        if (
-          product.hairTreatment["neverDyed"] === true &&
-          data.hairTreatment.includes("neverDyed")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTreatment["dyedWithStoreBoughtDyes"] === true &&
-          data.hairTreatment.includes("dyedWithStoreBoughtDyes")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTreatment["professionallyDyedInSalon"] === true &&
-          data.hairTreatment.includes("professionallyDyedInSalon")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTreatment["selfBleached"] === true &&
-          data.hairTreatment.includes("selfBleached")
-        ) {
-          return true;
-        }
-        if (
-          product.hairTreatment["professionallyBleachedInSalon"] === true &&
-          data.hairTreatment.includes("professionallyBleachedInSalon")
-        ) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  if (data?.scalpType) {
-    // Filtering by scalp type
-    products = products.filter((product) => {
-      if (!product.scalpType) {
-        return true;
-      } else {
-        if (product.scalpType["veryDry"] === true && data.scalpType === "dry") {
-          return true;
-        }
-        if (
-          product.scalpType["dryToNormal"] === true &&
-          data.scalpType === "dry-normal"
-        ) {
-          return true;
-        }
-        if (
-          product.scalpType["normal"] === true &&
-          data.scalpType === "normal"
-        ) {
-          return true;
-        }
-        if (
-          product.scalpType["normalToGreasy"] === true &&
-          data.scalpType === "normal-oily"
-        ) {
-          return true;
-        }
-        if (
-          product.scalpType["veryGreasy"] === true &&
-          data.scalpType === "oily"
-        ) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  if (data?.hairLength) {
-    // Filtering by hair length
-    products = products.filter((product) => {
-      if (!product.hairLength) {
-        return true;
-      } else {
-        if (
-          product.hairLength["short"] === true &&
-          data.hairLength === "short"
-        ) {
-          return true;
-        }
-        if (
-          product.hairLength["medium"] === true &&
-          data.hairLength === "medium"
-        ) {
-          return true;
-        }
-        if (product.hairLength["long"] === true && data.hairLength === "long") {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  // Filtering by treatment frequency
-  if (data?.treatmentFrequency) {
-    products = products.filter((product) => {
-      if (!product.hairTreatmentFrequency) {
-        return true;
-      } else {
-        if (
-          product.hairTreatmentFrequency["never"] === true &&
-          data.treatmentFrequency === "never"
-        ) {
-          return true;
-        }
-        if (
-          product.hairTreatmentFrequency["oneToThreeTimes"] === true &&
-          data.treatmentFrequency === "1-3 times"
-        ) {
-          return true;
-        }
-        if (
-          product.hairTreatmentFrequency["threeToSixTimes"] === true &&
-          data.treatmentFrequency === "3-6 times"
-        ) {
-          return true;
-        }
-        if (
-          product.hairTreatmentFrequency["moreThanSixTimes"] === true &&
-          data.treatmentFrequency === "more than 6 times"
-        ) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  if (data?.washFrequency) {
-    // Filtering by wash frequency
-    products = products.filter((product) => {
-      if (!product.hairWashFrequency) {
-        return true;
-      } else {
-        if (
-          product.hairWashFrequency["once"] === true &&
-          data.washFrequency === "1 time"
-        ) {
-          return true;
-        }
-        if (
-          product.hairWashFrequency["twoToThreeTimes"] === true &&
-          data.washFrequency === "2-3 times"
-        ) {
-          return true;
-        }
-        if (
-          product.hairWashFrequency["threeToFiveTimes"] === true &&
-          data.washFrequency === "3-5 times"
-        ) {
-          return true;
-        }
-        if (
-          product.hairWashFrequency["everyDay"] === true &&
-          data.washFrequency === "every day"
-        ) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
+  const products = filterProducts(data);
 
   return products;
 }
@@ -406,19 +98,19 @@ export default function Index() {
                 orientation="horizontal"
                 className="ps-2 md:ps-6"
               >
-                <Radio className="me-2" value="dry">
+                <Radio className="me-2" value="veryDry">
                   Vrlo suho
                 </Radio>
-                <Radio className="me-2" value="dry-normal">
+                <Radio className="me-2" value="dryToNormal">
                   Suho-normalno
                 </Radio>
                 <Radio className="me-2" value="normal">
                   Normalno
                 </Radio>
-                <Radio className="me-2" value="normal-oily">
+                <Radio className="me-2" value="normalToGreasy">
                   Normalno-masno
                 </Radio>
-                <Radio className="me-2" value="oily">
+                <Radio className="me-2" value="veryGreasy">
                   Vrlo masno
                 </Radio>
               </RadioGroup>

@@ -9,13 +9,13 @@ export default function AboutUsPage() {
         kolegija “Osnove marketinga” u sklopu Ekonomskog fakulteta u Zagrebu.
         Njen primarni cilj je olakšati potrošačima odabir proizvoda ili linije
         proizvoda najpovoljnijih za njihov specifičan tip kose. Aplikacija je
-        napravljena u obliku upitnika koji sadrži deset kratkih pitanja o
+        napravljena u obliku upitnika koji sadrži devet kratkih pitanja o
         karakteristikama Vaše kose, a na kraju upitnika, klikom na gumb
         “Pošalji” dobit ćete personaliziranu preporuku proizvoda/linije
         proizvoda na temelju Vaših odgovora. Također, aplikacija sadrži filter
         pomoću kojeg je moguće odrediti cjenovni prag ovisno o Vašem budžetu.
         Ova aplikacija napravljena je s ciljem da se ojača pozicija brendova
-        Gliss, Syoss te Schauma na tržistu, koji djeluju u okviru poduzeća
+        Gliss, Syoss te Schauma na tržistu koji djeluju u okviru poduzeća
         Henkel, a upravo je povećanje prodaje i poboljšanje tržišne pozicije
         jedan od zadataka ovog timskog projekta.
       </p>

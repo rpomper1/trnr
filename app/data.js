@@ -524,6 +524,25 @@ const henkel_products = [
     }
   },
   {
+    id: 40,
+    name: "Syoss Curls&Waves šampon za kovrčavu kosu ",
+    img: "https://cdn.notinoimg.com/detail_main_mq/syoss/9000101277517_01-o/syoss-curls-waves-sampon-za-kovrcavu-i-valovitu-kosu___230522.jpg",
+    brand: "Syoss",
+    price: 4.1,
+    gender: "F",
+    scalpType: null,
+    hairLength: null,
+    hairTexture: {
+      straight: false,
+      wavy: true,
+      curly: true
+    },
+    hairTreatment: null,
+    hairTreatmentFrequency: null,
+    hairWashFrequency: null,
+    hairTypeCharacteristics: null
+  },
+  {
     id: 16,
     name: "Gliss Oil Nutritive hranjivi šampon s uljem",
     img: "https://cdn.notinoimg.com/detail_main_mq/schwarzkopf/9000100549837_01-o/schwarzkopf-gliss-oil-nutritive-hranjivi-sampon-s-uljem___240111.jpg",
@@ -1327,25 +1346,6 @@ const henkel_products = [
     scalpType: null,
     hairLength: null,
     hairTexture: null,
-    hairTreatment: null,
-    hairTreatmentFrequency: null,
-    hairWashFrequency: null,
-    hairTypeCharacteristics: null
-  },
-  {
-    id: 40,
-    name: "Syoss Curls&Waves šampon za kovrčavu kosu ",
-    img: "https://cdn.notinoimg.com/detail_main_mq/syoss/9000101277517_01-o/syoss-curls-waves-sampon-za-kovrcavu-i-valovitu-kosu___230522.jpg",
-    brand: "Syoss",
-    price: 4.1,
-    gender: "F",
-    scalpType: null,
-    hairLength: null,
-    hairTexture: {
-      straight: false,
-      wavy: true,
-      curly: true
-    },
     hairTreatment: null,
     hairTreatmentFrequency: null,
     hairWashFrequency: null,
