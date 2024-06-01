@@ -9,6 +9,7 @@ const filterProducts = (data) => {
       return product.gender === data.gender;
     });
   }
+  console.log("Filtered by gender: ", products.length, products);
 
   // Filtering by price
   if (data?.maxPrice) {
@@ -16,6 +17,9 @@ const filterProducts = (data) => {
       return product.price <= data.maxPrice;
     });
   }
+
+  console.log("Filtered by price: ", products.length, products);
+
   if (data.hairType) {
     // Filtering by hair type
     let tempArr = [];

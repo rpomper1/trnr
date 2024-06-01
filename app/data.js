@@ -976,7 +976,7 @@ const henkel_products = [
   },
   {
     id: 28,
-    name: "Schauma Fresh it up! Osvježavajući šampon za masno vlasište i suhe vrhove, ",
+    name: "Schauma Fresh it up! Osvježavajući šampon za masno vlasište i suhe vrhove",
     img: "https://cdn.notinoimg.com/detail_main_mq/schwarzkopf/3838824293813_01-o/schwarzkopf-schauma-fresh-it-up-osvjezavajuci-sampon-za-masno-vlasiste-i-suhe-vrhove___231204.jpg",
     brand: "Schauma",
     price: 2.8,
