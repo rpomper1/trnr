@@ -50,79 +50,79 @@ const filterProducts = (data) => {
           product.hairTypeCharacteristics["damagedAndDriedEnds"] === true &&
           data.hairCharacteristics.includes("damagedDryEnds")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["proneToSplitEnds"] === true &&
           data.hairCharacteristics.includes("splitEnds")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["greasyHair"] === true &&
           data.hairCharacteristics.includes("oily")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["thickHair"] === true &&
           data.hairCharacteristics.includes("thick")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["thinHair"] === true &&
           data.hairCharacteristics.includes("thin")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["thinAndWeakHair"] === true &&
           data.hairCharacteristics.includes("thinWeak")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["strawHair"] === true &&
           data.hairCharacteristics.includes("strawLike")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["coloredHair"] === true &&
           data.hairCharacteristics.includes("colored")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["blondeHair"] === true &&
           data.hairCharacteristics.includes("blonde")
         ) {
-          product.productScore += 1.5;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["normalHair"] === true &&
           data.hairCharacteristics.includes("normal")
         ) {
-          product.productScore += 1.5;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["withoutVolume"] === true &&
           data.hairCharacteristics.includes("noVolume")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["containsDandruff"] === true &&
           data.hairCharacteristics.includes("dandruff")
         ) {
-          product.productScore += 3;
+          product.productScore += 2;
         }
         if (
           product.hairTypeCharacteristics["grayHair"] === true &&
           data.hairCharacteristics.includes("gray")
         ) {
-          product.productScore += 1;
+          product.productScore += 2;
         }
       }
     });
