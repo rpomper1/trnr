@@ -104,7 +104,7 @@ const filterProducts = (data) => {
           product.hairTypeCharacteristics["normalHair"] === true &&
           data.hairCharacteristics.includes("normal")
         ) {
-          product.productScore += 1;
+          product.productScore += 1.5;
         }
         if (
           product.hairTypeCharacteristics["withoutVolume"] === true &&
@@ -116,7 +116,7 @@ const filterProducts = (data) => {
           product.hairTypeCharacteristics["containsDandruff"] === true &&
           data.hairCharacteristics.includes("dandruff")
         ) {
-          product.productScore += 1;
+          product.productScore += 3;
         }
         if (
           product.hairTypeCharacteristics["grayHair"] === true &&
