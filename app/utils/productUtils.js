@@ -17,6 +17,9 @@ const filterProducts = (data) => {
       return product.price <= data.maxPrice;
     });
   }
+  if (products.length === 0) {
+    return null;
+  }
   let filteredProducts = [];
   products.forEach((product) => {
     filteredProducts.push({ ...product, productScore: 0 });

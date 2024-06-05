@@ -364,6 +364,19 @@ export default function Index() {
                 </CardBody>
               </Card>
             )}
+            {products === null && (
+              <Card className="p-2 my-2 w-full">
+                <CardHeader>
+                  <h1 className="text-2xl font-semibold">
+                    Naši preporučeni proizvodi
+                  </h1>
+                </CardHeader>
+                <CardBody className="mt-2">
+                  Nemamo preporučene proizvode za ove odabrane filtre. Pokušajte
+                  ponovno s drugim odabirom.
+                </CardBody>
+              </Card>
+            )}
           </>
         )}
       </div>
