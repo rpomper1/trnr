@@ -31,7 +31,7 @@ const filterProducts = (data) => {
       } else {
         if (product.hairTexture[data?.hairType] === true) {
           if (data?.hairType !== "straight") {
-            product.productScore += 2;
+            product.productScore += 5;
           } else {
             product.productScore += 1;
           }
