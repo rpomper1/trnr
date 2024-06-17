@@ -320,20 +320,10 @@ export default function TrainerTable() {
           onChange={setPage}
         />
         <div className="hidden sm:flex w-[30%] justify-end gap-2">
-          <Button
-            isDisabled={pages === 1}
-            size="sm"
-            variant="flat"
-            onPress={onPreviousPage}
-          >
+          <Button size="sm" variant="flat" onPress={onPreviousPage}>
             Previous
           </Button>
-          <Button
-            isDisabled={pages === 1}
-            size="sm"
-            variant="flat"
-            onPress={onNextPage}
-          >
+          <Button size="sm" variant="flat" onPress={onNextPage}>
             Next
           </Button>
         </div>
@@ -360,6 +350,7 @@ export default function TrainerTable() {
         topContent={topContent}
         topContentPlacement="outside"
         onSortChange={setSortDescriptor}
+        className="table"
       >
         <TableHeader columns={headerColumns}>
           {(column) => (

@@ -1,9 +1,11 @@
-import { useLocation } from "@remix-run/react";
+import { useLocation, useNavigate } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { users } from "../data";
+import { Button } from "@nextui-org/react";
 
 export default function DetailedTrainerPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [trainerDetails, setTrainerDetails] = useState(null);
   useEffect(() => {
     if (location) {
@@ -15,14 +17,16 @@ export default function DetailedTrainerPage() {
     }
   }, [location]);
 
-  console.log(location);
   return (
-    <div className="bg-white p-5">
+    <main>
+      <Button color="primary" onClick={() => navigate("/admin")}>
+        Back
+      </Button>
       <h1>Trainer Details</h1>
       <p>Here you can see detailed information about a trainer.</p>
       <div>
         <pre>{JSON.stringify(trainerDetails, null, 2)}</pre>
       </div>
-    </div>
+    </main>
   );
 }

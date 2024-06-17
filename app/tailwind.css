@@ -4,3 +4,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.table .bg-content1 {
+  box-shadow: none;
+}
+h1 {
+  font-weight: 700;
+  font-size: 1.875rem;
+}

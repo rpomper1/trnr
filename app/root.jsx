@@ -30,9 +30,7 @@ export function Layout({ children }) {
       <body className="no-scrollbar">
         <NextUIProvider className="scrollbar-hide" navigate={navigate}>
           <div className="min-h-screen flex flex-col items-center gap-5 bg-slate-50 scrollbar-hide">
-            <div className="scrollbar-hide max-w-[1024px] w-screen">
-              {children}
-            </div>
+            <div className="scrollbar-hide w-screen">{children}</div>
           </div>
           <ScrollRestoration />
           <Scripts />
