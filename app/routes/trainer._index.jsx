@@ -1,5 +1,6 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import TraineeTable from "~/components/tables/TraineeTable";
+import UnauthorizedTrainees from "~/components/trainer-specific/UnauthorizedTrainees";
 
 const TrainerDashboard = () => {
   return (
@@ -16,6 +17,16 @@ const TrainerDashboard = () => {
           </CardHeader>
           <CardBody>
             <TraineeTable />
+          </CardBody>
+        </Card>
+      </section>
+      <section>
+        <Card className="p-4">
+          <CardHeader>
+            <h1>Unauthorized Trainees</h1>
+          </CardHeader>
+          <CardBody>
+            <UnauthorizedTrainees />
           </CardBody>
         </Card>
       </section>

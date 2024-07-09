@@ -20,11 +20,11 @@ import { PlusIcon } from "../../custom-icons/PlusIcon";
 import { VerticalDotsIcon } from "../../custom-icons/VerticalDotsIcon";
 import { SearchIcon } from "../../custom-icons/SearchIcon";
 import { ChevronDownIcon } from "../../custom-icons/ChevronDownIcon";
-import { columns, users, statusOptions } from "../../data";
+import { columns, users, statusOptions } from "../../traineeData";
 import { capitalize, getInitials } from "../../utils/stringUtils";
 import { formatDate } from "../../utils/dateUtils";
 import { useNavigate } from "@remix-run/react";
-import EditTrainerModal from "../modals/EditTrainerModal";
+import EditTraineeModal from "../modals/EditTraineeModal";
 
 const statusColorMap = {
   active: "success",
@@ -41,8 +41,8 @@ const INITIAL_VISIBLE_COLUMNS = [
 ];
 
 export default function TraineeTable() {
-  const [showEditTrainerModal, setShowEditTrainerModal] = React.useState(false);
-  const [selectedTrainerForEdit, setSelectedTrainerForEdit] =
+  const [showEditTraineeModal, setShowEditTraineeModal] = React.useState(false);
+  const [selectedTraineeForEdit, setSelectedTraineeForEdit] =
     React.useState(null);
   const [filterValue, setFilterValue] = React.useState("");
   const [visibleColumns, setVisibleColumns] = React.useState(
@@ -158,14 +158,14 @@ export default function TraineeTable() {
                 </DropdownTrigger>
                 <DropdownMenu>
                   <DropdownItem
-                    onClick={() => navigate(`/admin/trainer/${user.id}`)}
+                    onClick={() => navigate(`/trainer/trainee/${user.id}`)}
                   >
                     View
                   </DropdownItem>
                   <DropdownItem
                     onClick={() => {
-                      setSelectedTrainerForEdit(user);
-                      setShowEditTrainerModal(true);
+                      setSelectedTraineeForEdit(user);
+                      setShowEditTraineeModal(true);
                     }}
                   >
                     Edit
@@ -219,7 +219,7 @@ export default function TraineeTable() {
         <div className="flex justify-between gap-3 items-end">
           <Input
             isClearable
-            className="w-full sm:max-w-[44%]"
+            className="w-fit"
             placeholder="Search by name..."
             startContent={<SearchIcon />}
             value={filterValue}
@@ -333,13 +333,13 @@ export default function TraineeTable() {
 
   return (
     <>
-      {showEditTrainerModal && (
-        <EditTrainerModal
+      {showEditTraineeModal && (
+        <EditTraineeModal
           onClose={() => {
-            setShowEditTrainerModal(false);
-            setSelectedTrainerForEdit(null);
+            setShowEditTraineeModal(false);
+            setSelectedTraineeForEdit(null);
           }}
-          trainer={selectedTrainerForEdit}
+          trainee={selectedTraineeForEdit}
         />
       )}
       <Table

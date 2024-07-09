@@ -19,7 +19,7 @@ const TrainerLayout = ({ children }) => {
 
   const menuItems = [
     { label: "Dashboard", path: "" },
-    { label: "Clients", path: "/clients" },
+    { label: "Requests", path: "/trainee-requests" },
     { label: "Workouts", path: "/workouts" },
     { label: "Settings", path: "/settings" }
   ];
@@ -63,19 +63,6 @@ const TrainerLayout = ({ children }) => {
               </NavbarItem>
             );
           })}
-          {/* {menuItems.map((item) => (
-          <NavbarItem
-            key={`${item.label}`}
-            isActive={location.pathname === `trainer${item.path.toLowerCase()}`}
-          >
-            <Link
-              href={`/trainer${item.path.toLowerCase()}`}
-              color="foreground"
-            >
-              {item.label}
-            </Link>
-          </NavbarItem>
-        ))} */}
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem>
@@ -85,7 +72,7 @@ const TrainerLayout = ({ children }) => {
           </NavbarItem>
         </NavbarContent>
         <NavbarMenu>
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <NavbarMenuItem
               key={`${item.label}`}
               isActive={
