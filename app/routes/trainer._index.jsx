@@ -1,5 +1,6 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import TraineeTable from "~/components/tables/TraineeTable";
+import SubscriptionDetails from "~/components/trainer-specific/SubscriptionDetails";
 import UnauthorizedTrainees from "~/components/trainer-specific/UnauthorizedTrainees";
 
 const TrainerDashboard = () => {
@@ -13,7 +14,7 @@ const TrainerDashboard = () => {
       <section>
         <Card className="p-4">
           <CardHeader>
-            <h1>Trainees</h1>
+            <h2>Trainees</h2>
           </CardHeader>
           <CardBody>
             <TraineeTable />
@@ -23,10 +24,20 @@ const TrainerDashboard = () => {
       <section>
         <Card className="p-4">
           <CardHeader>
-            <h1>Unauthorized Trainees</h1>
+            <h2>Unauthorized Trainees</h2>
           </CardHeader>
           <CardBody>
             <UnauthorizedTrainees />
+          </CardBody>
+        </Card>
+      </section>
+      <section>
+        <Card className="p-4">
+          <CardHeader>
+            <h2>My Plan</h2>
+          </CardHeader>
+          <CardBody>
+            <SubscriptionDetails />
           </CardBody>
         </Card>
       </section>
