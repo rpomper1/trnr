@@ -84,7 +84,7 @@ export default function TrainerTable() {
         Array.from(statusFilter).includes(user.status)
       );
     }
-
+    setPage(1);
     return filteredUsers;
   }, [filterValue, statusFilter, hasSearchFilter]);
 

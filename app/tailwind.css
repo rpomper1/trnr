@@ -9,6 +9,10 @@
 .table .bg-content1 {
   box-shadow: none;
 }
+.workout-table div {
+  box-shadow: none;
+  padding: 1rem 0;
+}
 h1 {
   font-weight: 700;
   font-size: 1.875rem;

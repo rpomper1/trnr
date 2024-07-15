@@ -1,12 +1,11 @@
 import { Button } from "@nextui-org/react";
 import { useNavigate } from "@remix-run/react";
-import { getTodaysDate } from "~/utils/dateUtils";
 
 const WeeklySummary = () => {
   const navigate = useNavigate();
   const weeklySummary = {
     goal: "Lose weight",
-    weekCycle: 212,
+    weekCycle: 7,
     scheduledWorkouts: 3,
     completedWorkouts: 2,
     targetCalories: 2000,
@@ -39,6 +38,8 @@ const WeeklySummary = () => {
           {weeklySummary.weekCycle !== 1 && (
             <Button
               auto
+              color="primary"
+              variant="bordered"
               onClick={() => handleClick(weeklySummary.weekCycle - 1)}
             >
               View Previous Week
