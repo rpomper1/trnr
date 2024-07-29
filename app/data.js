@@ -2,13 +2,14 @@ const columns = [
   { name: "ID", uid: "id", sortable: true },
   { name: "NAME", uid: "name", sortable: true },
   { name: "SUBSCRIPTION PLAN", uid: "subscription_plan", sortable: true },
-  { name: "SUBSCRIBED UNTIL", uid: "subscribed_until", sortable: true },
+  { name: "SUBSCRIBED UNTIL", uid: "paid_until", sortable: true },
   { name: "EMAIL", uid: "email" },
   { name: "STATUS", uid: "status", sortable: true },
   { name: "ACTIONS", uid: "actions" }
 ];
 const approveColumns = [
   { name: "NAME", uid: "name", sortable: true },
+  { name: "SUBSCRIPTION PLAN", uid: "subscription_plan", sortable: true },
   { name: "ACTIONS", uid: "actions" }
 ];
 const statusOptions = [

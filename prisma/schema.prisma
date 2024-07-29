@@ -10,12 +10,23 @@ datasource db {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model user {
-  id         Int      @id @default(autoincrement())
-  first_name String   @db.VarChar(255)
-  last_name  String   @db.VarChar(255)
-  email      String   @unique @db.VarChar(255)
-  password   String   @db.VarChar(255)
-  role       String   @db.VarChar(255)
-  created_at DateTime @default(now()) @db.Timestamp(6)
+  id         Int       @id @default(autoincrement())
+  first_name String    @db.VarChar(255)
+  last_name  String    @db.VarChar(255)
+  email      String    @unique @db.VarChar(255)
+  password   String    @db.VarChar(255)
+  role       String    @db.VarChar(255)
+  created_at DateTime  @default(now()) @db.Timestamp(6)
   disabled   Boolean
+  trainer    trainer[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model trainer {
+  id                Int       @id @default(autoincrement())
+  user_id           Int
+  paid_until        DateTime? @db.Timestamp(6)
+  subscription_plan String?   @default("Basic") @db.VarChar
+  status            String?   @default("unapproved") @db.VarChar
+  user              user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user")
 }

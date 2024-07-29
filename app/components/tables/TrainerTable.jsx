@@ -20,10 +20,10 @@ import { PlusIcon } from "../../custom-icons/PlusIcon";
 import { VerticalDotsIcon } from "../../custom-icons/VerticalDotsIcon";
 import { SearchIcon } from "../../custom-icons/SearchIcon";
 import { ChevronDownIcon } from "../../custom-icons/ChevronDownIcon";
-import { columns, users, statusOptions } from "../../data";
+import { columns, users as trainers, statusOptions } from "../../data";
 import { capitalize, getInitials } from "../../utils/stringUtils";
 import { formatDate } from "../../utils/dateUtils";
-import { useNavigate } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import EditTrainerModal from "../modals/EditTrainerModal";
 
 const statusColorMap = {
@@ -35,12 +35,13 @@ const statusColorMap = {
 const INITIAL_VISIBLE_COLUMNS = [
   "name",
   "subscription_plan",
-  "subscribed_until",
+  "paid_until",
   "status",
   "actions"
 ];
 
 export default function TrainerTable() {
+  const trainers = useLoaderData().trainers;
   const [showEditTrainerModal, setShowEditTrainerModal] = React.useState(false);
   const [selectedTrainerForEdit, setSelectedTrainerForEdit] =
     React.useState(null);
@@ -69,7 +70,7 @@ export default function TrainerTable() {
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredUsers = [...users];
+    let filteredUsers = [...trainers];
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
@@ -133,7 +134,7 @@ export default function TrainerTable() {
               {cellValue}
             </Chip>
           );
-        case "subscribed_until":
+        case "paid_until":
           return formatDate(cellValue);
 
         case "status":
@@ -282,7 +283,7 @@ export default function TrainerTable() {
         </div>
         <div className="flex justify-between items-center">
           <span className="text-default-400 text-small">
-            Total {users.length} users
+            Total {trainers.length} users
           </span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:

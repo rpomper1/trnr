@@ -9,10 +9,12 @@ import {
   User,
   Button
 } from "@nextui-org/react";
-import { trainersAwaitingApproval, approveColumns } from "../../data";
+import { approveColumns } from "../../data";
 import ApproveTrainerModal from "../modals/ApproveTrainerModal";
+import { useLoaderData } from "@remix-run/react";
 
 export default function UnauthorizedTrainersTable() {
+  const trainersAwaitingApproval = useLoaderData();
   const [showApproveTrainerModal, setShowApproveTrainerModal] = useState(false);
   const [selectedTrainerForApproval, setSelectedTrainerForApproval] =
     useState(null);
@@ -64,7 +66,10 @@ export default function UnauthorizedTrainersTable() {
             <TableColumn key={column.uid}>{column.name}</TableColumn>
           )}
         </TableHeader>
-        <TableBody items={trainersAwaitingApproval}>
+        <TableBody
+          items={trainersAwaitingApproval}
+          emptyContent={"No users found"}
+        >
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => (
