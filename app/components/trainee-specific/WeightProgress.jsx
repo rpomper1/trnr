@@ -1,6 +1,8 @@
 import { Button, Chip } from "@nextui-org/react";
+import { useNavigate } from "@remix-run/react";
 
 const WeightProgress = () => {
+  const navigate = useNavigate();
   const data = {
     startingWeight: 125.6,
     previousWeek: 6,
@@ -11,11 +13,16 @@ const WeightProgress = () => {
     data.previousWeekAverageWeight - data.startingWeight
   ).toFixed(2);
   const diffPercentage = ((difference / data.startingWeight) * 100).toFixed(2);
+
+  const onClickSeeProgress = () => {
+    console.log("See progress clicked");
+    navigate("/trainee/weight-progress");
+  };
   return (
     <div className="flex flex-col gap-3">
       <div className="flex justify-between">
         <h2>Weight Progress</h2>
-        <Button auto color="primary">
+        <Button auto color="primary" onClick={onClickSeeProgress}>
           View all
         </Button>
       </div>

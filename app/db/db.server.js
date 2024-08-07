@@ -101,6 +101,24 @@ WHERE
     await db.$disconnect();
   }
 };
+const getTrainer = async (trainerId) => {
+  try {
+    return await db.$queryRaw`SELECT 
+    u.*,
+    t.*
+FROM 
+    trainer t
+JOIN 
+    "user" u ON t.user_id = u.id
+WHERE 
+    t.id = ${trainerId}`;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await db.$disconnect();
+  }
+  db.$disconnect();
+};
 const approveTrainer = async (trainerId, paid_until) => {
   try {
     return await db.trainer.update({
@@ -148,5 +166,6 @@ export {
   getUnapprovedTrainers,
   approveTrainer,
   getTrainers,
-  updateTrainer
+  updateTrainer,
+  getTrainer
 };
