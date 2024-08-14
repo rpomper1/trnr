@@ -18,6 +18,7 @@ model user {
   role       String    @db.VarChar(255)
   created_at DateTime  @default(now()) @db.Timestamp(6)
   disabled   Boolean
+  trainee    trainee[]
   trainer    trainer[]
 }
 
@@ -28,5 +29,23 @@ model trainer {
   paid_until        DateTime? @db.Timestamp(6)
   subscription_plan String?   @default("Basic") @db.VarChar
   status            String?   @default("unapproved") @db.VarChar
+  trainee           trainee[]
   user              user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model trainee {
+  id              Int       @id @default(autoincrement())
+  user_id         Int
+  trainer_id      Int
+  status          String?   @default("unapproved") @db.VarChar
+  paid_until      DateTime? @db.Timestamp(6)
+  start_weight    Float
+  goal            String    @db.VarChar(255)
+  target_calories Int
+  target_protein  Int
+  target_carbs    Int
+  target_fats     Int
+  trainer         trainer   @relation(fields: [trainer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user            user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

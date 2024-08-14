@@ -20,11 +20,12 @@ import { PlusIcon } from "../../custom-icons/PlusIcon";
 import { VerticalDotsIcon } from "../../custom-icons/VerticalDotsIcon";
 import { SearchIcon } from "../../custom-icons/SearchIcon";
 import { ChevronDownIcon } from "../../custom-icons/ChevronDownIcon";
-import { columns, users, statusOptions } from "../../traineeData";
+import { columns, statusOptions } from "../../traineeData";
 import { capitalize, getInitials } from "../../utils/stringUtils";
 import { formatDate } from "../../utils/dateUtils";
-import { useNavigate } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import EditTraineeModal from "../modals/EditTraineeModal";
+import AddNewTraineeModal from "../modals/AddNewTraineeModal";
 
 const statusColorMap = {
   active: "success",
@@ -41,7 +42,10 @@ const INITIAL_VISIBLE_COLUMNS = [
 ];
 
 export default function TraineeTable() {
+  const trainees = useLoaderData().trainees;
   const [showEditTraineeModal, setShowEditTraineeModal] = React.useState(false);
+  const [showAddNewTraineeModal, setShowAddNewTraineeModal] =
+    React.useState(false);
   const [selectedTraineeForEdit, setSelectedTraineeForEdit] =
     React.useState(null);
   const [filterValue, setFilterValue] = React.useState("");
@@ -69,7 +73,7 @@ export default function TraineeTable() {
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
-    let filteredUsers = [...users];
+    let filteredUsers = [...trainees];
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter((user) =>
@@ -86,7 +90,7 @@ export default function TraineeTable() {
     }
     setPage(1);
     return filteredUsers;
-  }, [filterValue, statusFilter, hasSearchFilter]);
+  }, [filterValue, statusFilter, hasSearchFilter, trainees]);
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -275,14 +279,18 @@ export default function TraineeTable() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" endContent={<PlusIcon />}>
+            <Button
+              color="primary"
+              endContent={<PlusIcon />}
+              onClick={() => setShowAddNewTraineeModal(true)}
+            >
               Add New
             </Button>
           </div>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-default-400 text-small">
-            Total {users.length} users
+            Total {trainees.length} users
           </span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:
@@ -304,7 +312,8 @@ export default function TraineeTable() {
     visibleColumns,
     onRowsPerPageChange,
     onSearchChange,
-    onClear
+    onClear,
+    trainees
   ]);
 
   const bottomContent = React.useMemo(() => {
@@ -341,6 +350,9 @@ export default function TraineeTable() {
           }}
           trainee={selectedTraineeForEdit}
         />
+      )}
+      {showAddNewTraineeModal && (
+        <AddNewTraineeModal onClose={() => setShowAddNewTraineeModal(false)} />
       )}
       <Table
         aria-label="Trainers table with custom cells, pagination and sorting"

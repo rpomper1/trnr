@@ -1,7 +1,9 @@
 import { Card, CardBody } from "@nextui-org/react";
+import { redirect } from "@remix-run/server-runtime";
 import UpcomingWorkout from "~/components/trainee-specific/UpcomingWorkout";
 import WeeklySummary from "~/components/trainee-specific/WeeklySummary";
 import WeightProgress from "~/components/trainee-specific/WeightProgress";
+import { getSession } from "~/sessions";
 
 const TraineeDashboard = () => {
   return (

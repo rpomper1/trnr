@@ -1,6 +1,4 @@
-import { parseDateTime } from "@internationalized/date";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
-import { redirect } from "@remix-run/server-runtime";
 import UnauthorizedTrainers from "~/components/admin-specific/UnauthorizedTrainers";
 import TrainerTable from "~/components/tables/TrainerTable";
 import {
@@ -32,10 +30,6 @@ export async function action({ request }) {
   const status = formData.get("status");
   const trainerId = Number(formData.get("trainerId"));
   const paidUntil = formData.get("paid_until");
-  console.log("subscriptionPlan", subscriptionPlan);
-  console.log("status", status);
-  console.log("trainerId", trainerId);
-  console.log("paidUntil", paidUntil);
   await updateTrainer(
     trainerId,
     capitalize(subscriptionPlan),

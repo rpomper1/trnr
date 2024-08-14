@@ -11,7 +11,7 @@ import {
   Button,
   Image
 } from "@nextui-org/react";
-import { Link, useLocation } from "@remix-run/react";
+import { Form, Link, useLocation } from "@remix-run/react";
 
 const TrainerLayout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -70,9 +70,12 @@ const TrainerLayout = ({ children }) => {
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
+            <Form method="post">
+              <button>Logout</button>
+            </Form>
+            {/* <Button as={Link} color="primary" href="#" variant="flat">
               Logout
-            </Button>
+            </Button> */}
           </NavbarItem>
         </NavbarContent>
         <NavbarMenu>

@@ -9,14 +9,16 @@ import {
   User,
   Button
 } from "@nextui-org/react";
-import { approveColumns } from "../../data";
-import ApproveTrainerModal from "../modals/ApproveTrainerModal";
 import { useLoaderData } from "@remix-run/react";
-
+import ApproveTraineeModal from "../modals/ApproveTraineeModal";
+const approveColumns = [
+  { name: "NAME", uid: "name", sortable: true },
+  { name: "ACTIONS", uid: "actions" }
+];
 export default function UnauthorizedTrainersTable() {
   const trainersAwaitingApproval = useLoaderData();
-  const [showApproveTrainerModal, setShowApproveTrainerModal] = useState(false);
-  const [selectedTrainerForApproval, setSelectedTrainerForApproval] =
+  const [showApproveTraineeModal, setShowApproveTraineeModal] = useState(false);
+  const [selectedTraineeForApproval, setSelectedTraineeForApproval] =
     useState(null);
   const renderCell = React.useCallback((user, columnKey) => {
     const cellValue = user[columnKey];
@@ -37,8 +39,8 @@ export default function UnauthorizedTrainersTable() {
         return (
           <Button
             onClick={() => {
-              setSelectedTrainerForApproval(user);
-              setShowApproveTrainerModal(true);
+              setSelectedTraineeForApproval(user);
+              setShowApproveTraineeModal(true);
             }}
           >
             Approve
@@ -51,12 +53,12 @@ export default function UnauthorizedTrainersTable() {
 
   return (
     <>
-      {showApproveTrainerModal && (
-        <ApproveTrainerModal
-          trainer={selectedTrainerForApproval}
+      {showApproveTraineeModal && (
+        <ApproveTraineeModal
+          trainee={selectedTraineeForApproval}
           onClose={() => {
-            setSelectedTrainerForApproval(null);
-            setShowApproveTrainerModal(false);
+            setSelectedTraineeForApproval(null);
+            setShowApproveTraineeModal(false);
           }}
         />
       )}

@@ -88,6 +88,7 @@ const SignupTrainerForm = () => {
             label="Select a subscription plan"
             className="max-w-xs"
             name="subscriptionPlan"
+            variant="bordered"
           >
             {subscriptionPlans.map((subscriptionPlan) => (
               <SelectItem key={subscriptionPlan.value}>

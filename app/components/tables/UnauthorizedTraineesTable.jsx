@@ -9,10 +9,12 @@ import {
   User,
   Button
 } from "@nextui-org/react";
-import { traineesAwaitingApproval, approveColumns } from "../../traineeData";
+import { approveColumns } from "../../traineeData";
 import ApproveTraineeModal from "../modals/ApproveTraineeModal";
+import { useLoaderData } from "@remix-run/react";
 
 export default function UnauthorizedTraineesTable() {
+  const traineesAwaitingApproval = useLoaderData();
   const [showApproveTraineeModal, setShowApproveTraineeModal] = useState(false);
   const [selectedTraineeForApproval, setSelectedTraineeForApproval] =
     useState(null);

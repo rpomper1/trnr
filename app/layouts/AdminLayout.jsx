@@ -8,6 +8,7 @@ import {
   NavbarItem
 } from "@nextui-org/react";
 import logo from "../assets/TR.png";
+import { Form } from "@remix-run/react";
 
 const AdminLayout = ({ children }) => {
   return (
@@ -19,9 +20,12 @@ const AdminLayout = ({ children }) => {
 
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
+            <Form method="post">
+              <button>Logout</button>
+            </Form>
+            {/* <Button as={Link} color="primary" href="#" variant="flat">
               Logout
-            </Button>
+            </Button> */}
           </NavbarItem>
         </NavbarContent>
       </Navbar>

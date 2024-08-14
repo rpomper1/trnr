@@ -18,10 +18,7 @@ export async function action({ request }) {
   const formData = await request.formData();
   const subscribed_until = String(formData.get("subscribed_until"));
   const trainerId = Number(formData.get("trainerId"));
-  console.log("trainerId", trainerId);
-  console.log("subscribed_until", subscribed_until);
   const result = await approveTrainer(trainerId, new Date(subscribed_until));
-  console.log("result", result);
   return null;
 }
 const TrainerRequestsPage = () => {

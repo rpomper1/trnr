@@ -25,6 +25,7 @@ import { capitalize, getInitials } from "../../utils/stringUtils";
 import { formatDate } from "../../utils/dateUtils";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import EditTrainerModal from "../modals/EditTrainerModal";
+import AddNewTrainerModal from "../modals/AddNewTrainerModal";
 
 const statusColorMap = {
   active: "success",
@@ -43,6 +44,8 @@ const INITIAL_VISIBLE_COLUMNS = [
 export default function TrainerTable() {
   const trainers = useLoaderData().trainers;
   const [showEditTrainerModal, setShowEditTrainerModal] = React.useState(false);
+  const [showAddNewTrainerModal, setShowAddNewTrainerModal] =
+    React.useState(false);
   const [selectedTrainerForEdit, setSelectedTrainerForEdit] =
     React.useState(null);
   const [filterValue, setFilterValue] = React.useState("");
@@ -276,7 +279,11 @@ export default function TrainerTable() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" endContent={<PlusIcon />}>
+            <Button
+              color="primary"
+              endContent={<PlusIcon />}
+              onClick={() => setShowAddNewTrainerModal(true)}
+            >
               Add New
             </Button>
           </div>
@@ -342,6 +349,9 @@ export default function TrainerTable() {
           }}
           trainer={selectedTrainerForEdit}
         />
+      )}
+      {showAddNewTrainerModal && (
+        <AddNewTrainerModal onClose={() => setShowAddNewTrainerModal(false)} />
       )}
       <Table
         aria-label="Trainers table with custom cells, pagination and sorting"
