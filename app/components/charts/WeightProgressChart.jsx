@@ -1,44 +1,52 @@
-// import { Component } from "react";
-// import Chart from "react-apexcharts";
+import Chart from "./";
 
-// class WeightProgressChart extends Component {
-//   constructor(props) {
-//     super(props);
+const WeightProgressChart = ({ data }) => {
+  // Create the chart
+  const options = {
+    series: data,
+    chart: {
+      id: "area-datetime",
+      type: "area",
+      height: 350,
+      zoom: {
+        autoScaleYaxis: true
+      }
+    },
+    stroke: {
+      curve: "smooth"
+    },
+    dataLabels: {
+      enabled: false
+    },
+    markers: {
+      size: 0,
+      style: "hollow"
+    },
+    xaxis: {
+      type: "datetime"
+    },
+    // yaxis: {
+    //   max: function (val) {
+    //     return val + 5;
+    //   }
+    // },
+    tooltip: {
+      shared: true,
+      x: {
+        format: "dd MMM yyyy"
+      }
+    }
+  };
 
-//     this.state = {
-//       options: {
-//         chart: {
-//           id: "basic-bar"
-//         },
-//         xaxis: {
-//           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-//         }
-//       },
-//       series: [
-//         {
-//           name: "series-1",
-//           data: [30, 40, 45, 50, 49, 60, 70, 91]
-//         }
-//       ]
-//     };
-//   }
+  return (
+    <div className="app">
+      <div className="row">
+        <div className="mixed-chart">
+          <Chart options={options} series={options.series} type="line" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-//   render() {
-//     return (
-//       <div className="app">
-//         <div className="row">
-//           <div className="mixed-chart">
-//             <Chart
-//               options={this.state.options}
-//               series={this.state.series}
-//               type="bar"
-//               width="500"
-//             />
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default WeightProgressChart;
+export default WeightProgressChart;

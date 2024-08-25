@@ -8,7 +8,6 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Button,
   Image
 } from "@nextui-org/react";
 import { Form, Link, useLocation } from "@remix-run/react";
@@ -20,8 +19,7 @@ const TrainerLayout = ({ children }) => {
   const menuItems = [
     { label: "Dashboard", path: "" },
     { label: "Requests", path: "/trainee-requests" },
-    { label: "Workouts", path: "/workouts" },
-    { label: "Settings", path: "/settings" }
+    { label: "My Exercises", path: "/exercises" }
   ];
 
   useEffect(() => {
@@ -73,9 +71,6 @@ const TrainerLayout = ({ children }) => {
             <Form method="post">
               <button>Logout</button>
             </Form>
-            {/* <Button as={Link} color="primary" href="#" variant="flat">
-              Logout
-            </Button> */}
           </NavbarItem>
         </NavbarContent>
         <NavbarMenu>

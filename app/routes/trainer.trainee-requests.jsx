@@ -1,4 +1,4 @@
-import UnauthorizedTraineesTable from "~/components/tables/UnauthorizedTrainersTable";
+import UnauthorizedTraineesTable from "~/components/tables/UnauthorizedTraineesTable";
 import { approveTrainee, getUnapprovedTrainees } from "~/db/db.server";
 import { getSession } from "~/sessions";
 export async function loader({ request }) {
@@ -20,8 +20,12 @@ export async function loader({ request }) {
 export async function action({ request }) {
   const formData = await request.formData();
   const subscribed_until = String(formData.get("subscribed_until"));
+  console.log(subscribed_until);
   const traineeId = Number(formData.get("traineeId"));
-  const result = await approveTrainee(traineeId, new Date(subscribed_until));
+  const result = await approveTrainee(
+    traineeId,
+    subscribed_until ? new Date(subscribed_until) : new Date()
+  );
   return null;
 }
 const TraineeRequestsPage = () => {

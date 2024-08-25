@@ -20,7 +20,7 @@ import { PlusIcon } from "../../custom-icons/PlusIcon";
 import { VerticalDotsIcon } from "../../custom-icons/VerticalDotsIcon";
 import { SearchIcon } from "../../custom-icons/SearchIcon";
 import { ChevronDownIcon } from "../../custom-icons/ChevronDownIcon";
-import { columns, users as trainers, statusOptions } from "../../data";
+import { columns, statusOptions } from "../../data";
 import { capitalize, getInitials } from "../../utils/stringUtils";
 import { formatDate } from "../../utils/dateUtils";
 import { useLoaderData, useNavigate } from "@remix-run/react";
@@ -43,6 +43,7 @@ const INITIAL_VISIBLE_COLUMNS = [
 
 export default function TrainerTable() {
   const trainers = useLoaderData().trainers;
+  console.log("trainers", trainers);
   const [showEditTrainerModal, setShowEditTrainerModal] = React.useState(false);
   const [showAddNewTrainerModal, setShowAddNewTrainerModal] =
     React.useState(false);
@@ -90,7 +91,7 @@ export default function TrainerTable() {
     }
     setPage(1);
     return filteredUsers;
-  }, [filterValue, statusFilter, hasSearchFilter]);
+  }, [filterValue, statusFilter, hasSearchFilter, trainers]);
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -312,7 +313,8 @@ export default function TrainerTable() {
     visibleColumns,
     onRowsPerPageChange,
     onSearchChange,
-    onClear
+    onClear,
+    trainers
   ]);
 
   const bottomContent = React.useMemo(() => {

@@ -12,7 +12,6 @@ import {
   SelectItem
 } from "@nextui-org/react";
 import { Form } from "@remix-run/react";
-import { formatDate } from "~/utils/dateUtils";
 
 const subscriptionPlans = [
   { value: "basic", label: "Basic", key: "basic" },
@@ -25,7 +24,6 @@ const statusOptions = [
 ];
 
 export default function EditTrainerModal({ trainer, onClose }) {
-  console.log("trainer", trainer);
   return (
     <Modal isOpen={true} onClose={onClose}>
       <ModalContent>

@@ -3,8 +3,14 @@ import { useLoaderData } from "@remix-run/react";
 import TraineeTable from "~/components/tables/TraineeTable";
 import SubscriptionDetails from "~/components/trainer-specific/SubscriptionDetails";
 import UnauthorizedTrainees from "~/components/trainer-specific/UnauthorizedTrainees";
-import { getTrainees, getUnapprovedTrainees } from "~/db/db.server";
+import {
+  getTrainees,
+  getUnapprovedTrainees,
+  updateTrainee
+} from "~/db/db.server";
 import { getSession } from "~/sessions";
+import { parseDateTimeFromTimezone } from "~/utils/dateUtils";
+
 export async function loader({ request }) {
   const session = await getSession(request.headers.get("Cookie"));
   const sessionUser = session.get("user");
@@ -16,12 +22,26 @@ export async function loader({ request }) {
       id: trainee.id,
       name: `${trainee.first_name} ${trainee.last_name}`,
       email: trainee.email,
-      paid_until: trainee.paid_until,
+      subscribed_until: trainee.paid_until,
       status: trainee.status
     };
   });
 
   return { sessionUser, sessionTrainer, trainees, unapprovedTrainees };
+}
+export async function action({ request }) {
+  const formData = await request.formData();
+  const status = formData.get("status");
+  const traineeId = Number(formData.get("traineeId"));
+  const paidUntil = formData.get("paid_until");
+
+  const result = await updateTrainee(
+    traineeId,
+    parseDateTimeFromTimezone(paidUntil),
+    status
+  );
+  console.log(result);
+  return null;
 }
 const TrainerDashboard = () => {
   const sessionUser = useLoaderData().sessionUser;

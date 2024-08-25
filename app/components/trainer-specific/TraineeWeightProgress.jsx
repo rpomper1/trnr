@@ -1,11 +1,11 @@
 import { Button, Chip } from "@nextui-org/react";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import { useState } from "react";
-import EditDailyWeightLogModal from "../modals/UpdateDailyWeightLogModal";
-import InsertDailyWeightLogModal from "../modals/InsertDailyWeightLogModal";
 import { getCurrentWeekData } from "~/utils/dailyLogs";
+import TraineeEditDailyWeightLogModal from "../modals/TraineeUpdateDailyWeightLogModal";
+import TraineeInsertDailyWeightLogModal from "../modals/TraineeInsertDailyWeightLog";
 
-const WeightProgress = () => {
+const TraineeWeightProgress = () => {
   const trainee = useLoaderData().trainee;
   const dailyWeight = useLoaderData().dailyWeight;
   const dailyWeightLogs = useLoaderData().dailyWeightLogs;
@@ -21,18 +21,19 @@ const WeightProgress = () => {
   );
 
   const onClickSeeProgress = () => {
-    navigate("/trainee/weight-progress/");
+    navigate("/trainer/trainee/weight-progress/" + trainee?.id);
   };
   return (
     <>
       {showEditWeightModal && (
-        <EditDailyWeightLogModal
+        <TraineeEditDailyWeightLogModal
           onClose={() => setShowEditWeightModal(false)}
+          traineeId={trainee?.id}
           logId={dailyWeight?.id}
         />
       )}
       {showInsertWeightModal && (
-        <InsertDailyWeightLogModal
+        <TraineeInsertDailyWeightLogModal
           traineeId={trainee?.id}
           onClose={() => setShowInsertWeightModal(false)}
         />
@@ -40,7 +41,12 @@ const WeightProgress = () => {
       <div className="flex flex-col gap-3">
         <div className="flex justify-between">
           <h2>Weight Progress</h2>
-          <Button auto color="primary" onClick={onClickSeeProgress}>
+          <Button
+            auto
+            color="primary"
+            onClick={onClickSeeProgress}
+            disabled={typeof difference === Number ? false : true}
+          >
             View details
           </Button>
         </div>
@@ -48,14 +54,19 @@ const WeightProgress = () => {
           <div className="flex flex-col gap-2">
             <span>Start: {trainee?.start_weight} kg</span>
             <span className="text-3xl font-bold">
-              Week Average: {currentWeekLogs?.averageWeight} kg
+              Week Average:{" "}
+              {typeof currentWeekLogs?.averageWeight === Number
+                ? `${currentWeekLogs.averageWeight} kg`
+                : `${trainee?.start_weight} kg`}
             </span>
           </div>
           <div className="flex flex-col gap-1">
-            <span>{difference < 0 ? "Total lost:" : "Total gained:"}</span>
-            <span className="text-3xl font-bold">{difference} kg</span>
+            <span>{difference <= 0 ? "Total lost:" : "Total gained:"}</span>
+            <span className="text-3xl font-bold">
+              {typeof difference === Number ? difference : "0"} kg
+            </span>
             <Chip color="success" variant="bordered">
-              {diffPercentage} %
+              {typeof diffPercentage === Number ? diffPercentage : "0"} %
             </Chip>
           </div>
         </div>
@@ -82,4 +93,4 @@ const WeightProgress = () => {
     </>
   );
 };
-export default WeightProgress;
+export default TraineeWeightProgress;

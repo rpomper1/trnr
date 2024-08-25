@@ -27,6 +27,7 @@ const ApproveTraineeModal = ({ onClose, trainee }) => {
                 ></Input>
                 <p>{trainee.name}</p>
                 <DatePicker
+                  isRequired
                   name="subscribed_until"
                   id="subscribed_until"
                   label="Paid until"

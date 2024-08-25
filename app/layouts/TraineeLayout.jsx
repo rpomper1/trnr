@@ -8,7 +8,6 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Button,
   Image
 } from "@nextui-org/react";
 import { Form, Link, useLocation } from "@remix-run/react";
@@ -17,7 +16,11 @@ const TraineeLayout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const location = useLocation();
 
-  const menuItems = [{ label: "Dashboard", path: "" }];
+  const menuItems = [
+    { label: "Dashboard", path: "" },
+    { label: "Weight Progress", path: "/weight-progress" },
+    { label: "My Workouts", path: "/workouts" }
+  ];
 
   useEffect(() => {
     setIsMenuOpen(false);

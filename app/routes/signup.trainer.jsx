@@ -1,6 +1,7 @@
 import SignupTrainerForm from "~/components/admin-specific/SignupTrainerForm";
 import bcrypt from "bcryptjs";
 import { createTrainer, createUser } from "~/db/db.server";
+import { redirect } from "@remix-run/server-runtime";
 export async function action({ request }) {
   const formData = await request.formData();
   const firstName = String(formData.get("firstName"));
@@ -29,7 +30,7 @@ export async function action({ request }) {
   console.log("user", user);
   const trainer = await createTrainer(user.id, subscriptionPlan);
   console.log("trainer", trainer);
-  return null;
+  return redirect("/request-completed");
 }
 const SignupTrainer = () => {
   return (

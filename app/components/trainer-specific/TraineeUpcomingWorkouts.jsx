@@ -1,23 +1,31 @@
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
+import AddWorkoutModal from "../modals/AddWorkoutModal";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import WorkoutTable from "../tables/WorkoutTable";
 import { formatDate } from "~/utils/dateUtils";
 import CompleteWorkoutModal from "../modals/CompleteWorkoutModal";
 
-const UpcomingWorkouts = () => {
+const TraineeUpcomingWorkouts = () => {
   const navigate = useNavigate();
   const trainee = useLoaderData().trainee;
   const upcomingWorkouts = useLoaderData().upcomingWorkouts;
+  const [showAddWorkoutModal, setShowAddWorkoutModal] = useState(false);
   const [showCompleteWorkoutModal, setShowCompleteWorkoutModal] =
     useState(false);
   const [selectedWorkoutForCompletion, setSelectedWorkoutForCompletion] =
     useState(null);
   return (
     <>
+      {showAddWorkoutModal && (
+        <AddWorkoutModal
+          onClose={() => setShowAddWorkoutModal(false)}
+          traineeId={trainee.id}
+        />
+      )}
       {showCompleteWorkoutModal && (
         <CompleteWorkoutModal
-          path={"/trainee?index"}
+          path={"/trainer/trainee"}
           onClose={() => setShowCompleteWorkoutModal(false)}
           traineeId={trainee.id}
           workout={selectedWorkoutForCompletion}
@@ -26,7 +34,10 @@ const UpcomingWorkouts = () => {
       <div className="flex flex-col gap-5">
         <div className="flex justify-between items-center">
           <h2>Upcoming Workouts</h2>
-          <Button color="primary" onClick={() => navigate("/trainee/workouts")}>
+          <Button
+            color="primary"
+            onClick={() => navigate("/trainer/trainee/workouts/" + trainee.id)}
+          >
             View all
           </Button>
         </div>
@@ -60,8 +71,11 @@ const UpcomingWorkouts = () => {
         ) : (
           <div>No upcoming workouts!</div>
         )}
+        <Button color="primary" onClick={() => setShowAddWorkoutModal(true)}>
+          Add workout
+        </Button>
       </div>
     </>
   );
 };
-export default UpcomingWorkouts;
+export default TraineeUpcomingWorkouts;

@@ -3,7 +3,7 @@ import { Button, Card } from "@nextui-org/react";
 import { getTrainer } from "~/db/db.server";
 import { formatDate } from "~/utils/dateUtils";
 
-export async function loader({ params, location }) {
+export async function loader({ params }) {
   console.log("params", params);
   const trainer = await getTrainer(parseInt(params.id));
   console.log("trainer", trainer);

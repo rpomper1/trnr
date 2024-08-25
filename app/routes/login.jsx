@@ -56,9 +56,7 @@ export async function action({ request }) {
   }
   if (user.role === "Trainee") {
     const trainee = await getTraineeFromUserId(user.id);
-    session.set("trainee", {
-      id: trainee.id
-    });
+    session.set("trainee", trainee[0]);
   }
   console.log("user", user);
   if (user && bcrypt.compareSync(password, user.password)) {

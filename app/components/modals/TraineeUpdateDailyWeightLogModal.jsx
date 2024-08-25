@@ -1,60 +1,46 @@
-import { parseAbsoluteToLocal } from "@internationalized/date";
 import {
   Button,
-  DatePicker,
   Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
-  ModalHeader,
-  Select,
-  SelectItem
+  ModalHeader
 } from "@nextui-org/react";
 import { Form } from "@remix-run/react";
-const statusOptions = [
-  { value: "active", label: "Active", key: "active" },
-  { value: "inactive", label: "Inactive", key: "inactive" },
-  { value: "paused", label: "Paused", key: "paused" }
-];
-export default function EditTraineeModal({ trainee, onClose }) {
+
+export default function TraineeEditDailyWeightLogModal({
+  logId,
+  traineeId,
+  onClose
+}) {
   return (
     <Modal isOpen={true} onClose={onClose}>
       <ModalContent>
         {(onClose) => (
-          <Form method="post" action="/trainer?index">
+          <Form method="POST" action={"/trainer/trainee/" + Number(traineeId)}>
             <ModalHeader className="flex flex-col gap-1">
-              Edit Trainee
+              Edit Daily Weight Log for {new Date().toLocaleDateString()}
             </ModalHeader>
             <ModalBody>
               <Input
                 className="hidden"
-                name="traineeId"
-                id="traineeId"
-                value={trainee.id}
+                name="formRequest"
+                id="formRequest"
+                value={"editDailyWeightLog"}
               ></Input>
-              <div>
-                <DatePicker
-                  name="paid_until"
-                  id="paid_until"
-                  granularity="day"
-                  label="Subscribed until"
-                  defaultValue={parseAbsoluteToLocal(trainee.subscribed_until)}
-                />
-              </div>
-              <div>
-                <Select
-                  name="status"
-                  id="status"
-                  label="Status"
-                  placeholder="Select a status"
-                  defaultSelectedKeys={[trainee.status.toLowerCase()]}
-                >
-                  {statusOptions.map((option) => (
-                    <SelectItem key={option.key}>{option.label}</SelectItem>
-                  ))}
-                </Select>
-              </div>
+              <Input
+                className="hidden"
+                name="logId"
+                id="logId"
+                value={logId}
+              ></Input>
+              <Input
+                name="weight"
+                id="weight"
+                type={"number"}
+                label={"Weight (kg)"}
+              ></Input>
             </ModalBody>
             <ModalFooter>
               <Button color="danger" variant="light" onPress={onClose}>
