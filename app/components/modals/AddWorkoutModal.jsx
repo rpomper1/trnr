@@ -24,7 +24,6 @@ export default function AddWorkoutModal({ onClose, traineeId }) {
   const exercises = useLoaderData().exercises;
   const exerciseOptions = separateExercisesByPrivacy(exercises);
 
-  console.log("exercises: ", exercises);
   const [workoutInstances, setWorkoutInstances] = useState([
     { exerciseId: null, sets: null, reps: null, weight: null }
   ]);

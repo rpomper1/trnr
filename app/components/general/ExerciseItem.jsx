@@ -1,8 +1,6 @@
 import { Button } from "@nextui-org/react";
 
 const ExerciseItem = ({ exercise }) => {
-  console.log("exercise item: ", exercise);
-  console.log(exercise.video_link);
   const handleClick = (url) => {
     window.open(url, "_blank");
   };

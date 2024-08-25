@@ -18,7 +18,6 @@ function getCurrentWeekData(dataArray) {
     const itemDate = new Date(item.date);
     return itemDate >= startOfWeek && itemDate <= endOfWeek;
   });
-  console.log("filteredArray", filteredArray);
   return {
     data: filteredArray,
     averageWeight: (

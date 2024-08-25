@@ -40,7 +40,6 @@ export async function action({ request }) {
     parseDateTimeFromTimezone(paidUntil),
     status
   );
-  console.log(result);
   return null;
 }
 const TrainerDashboard = () => {

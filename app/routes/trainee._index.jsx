@@ -17,7 +17,6 @@ export async function loader({ request }) {
   const session = await getSession(request.headers.get("Cookie"));
   const sessionUser = session.get("user");
   const trainee = session.get("trainee");
-  console.log("trainee: ", trainee);
   const dailyWeight = await getTodayWeightLog(trainee.id);
   const dailyWeightLogsRaw = await getDailyWeightLogs(trainee.id);
   const dailyWeightLogs = dailyWeightLogsRaw.sort((a, b) => {
@@ -41,7 +40,6 @@ export async function action({ request }) {
     const traineeId = Number(formData.get("traineeId"));
     const workoutId = Number(formData.get("workoutId"));
     const trainingInstances = JSON.parse(formData.get("trainingInstances"));
-    console.log("completeWorkout: ", traineeId, workoutId, trainingInstances);
     await completeWorkout(workoutId);
     trainingInstances.forEach(async (instance) => {
       if (instance.modified) {
@@ -67,7 +65,6 @@ export async function action({ request }) {
 const TraineeDashboard = () => {
   const sessionUser = useLoaderData().sessionUser;
   const trainee = useLoaderData().trainee;
-  console.log("trainee dashboard: ", sessionUser, trainee);
   return (
     <main className="flex flex-col gap-10">
       <section>

@@ -28,7 +28,6 @@ export async function action({ request }) {
 
   const session = await getSession(request.headers.get("Cookie"));
   const user = await getUser(email);
-  console.log("user", user);
   if (!user) {
     errors.email = "User not found";
     return json({ errors });
@@ -45,7 +44,6 @@ export async function action({ request }) {
   if (user.role === "Trainer") {
     const trainerRaw = await getTrainerFromUserId(user.id);
     const trainer = trainerRaw[0];
-    console.log("trainer", trainer);
 
     session.set("trainer", {
       id: trainer.id,
@@ -58,7 +56,6 @@ export async function action({ request }) {
     const trainee = await getTraineeFromUserId(user.id);
     session.set("trainee", trainee[0]);
   }
-  console.log("user", user);
   if (user && bcrypt.compareSync(password, user.password)) {
     if (user.disabled) {
       errors.email = "User is disabled";

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Toggler from "./Toggler";
 
 const Sidebar = ({ children, isCollapsed }) => {
-  console.log("children", children);
   const [isOpen, toggleIsOpen] = useState(isCollapsed);
   const [prevIsCollapseFromParent, setParentCollapse] = useState(!isCollapsed);
   const color = "bg-white";

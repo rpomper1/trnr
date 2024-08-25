@@ -40,11 +40,8 @@ const getChartData = (rawData) => {
     log.value
   ]);
 
-  console.log("sortedData: ", sortedData);
-
   const weeklyData = groupDataByWeek(sortedData);
 
-  console.log("weeklyData: ", weeklyData);
   const weeklySeriesData = weeklyData.map((week) => {
     const weekAverage =
       week.data.reduce((acc, log) => acc + log.value, 0) / week.data.length;

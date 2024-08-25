@@ -4,9 +4,7 @@ import { getTrainer } from "~/db/db.server";
 import { formatDate } from "~/utils/dateUtils";
 
 export async function loader({ params }) {
-  console.log("params", params);
   const trainer = await getTrainer(parseInt(params.id));
-  console.log("trainer", trainer);
   return trainer[0];
 }
 

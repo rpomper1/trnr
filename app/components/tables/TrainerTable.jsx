@@ -43,7 +43,6 @@ const INITIAL_VISIBLE_COLUMNS = [
 
 export default function TrainerTable() {
   const trainers = useLoaderData().trainers;
-  console.log("trainers", trainers);
   const [showEditTrainerModal, setShowEditTrainerModal] = React.useState(false);
   const [showAddNewTrainerModal, setShowAddNewTrainerModal] =
     React.useState(false);

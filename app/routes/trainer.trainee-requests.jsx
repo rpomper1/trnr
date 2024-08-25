@@ -20,7 +20,6 @@ export async function loader({ request }) {
 export async function action({ request }) {
   const formData = await request.formData();
   const subscribed_until = String(formData.get("subscribed_until"));
-  console.log(subscribed_until);
   const traineeId = Number(formData.get("traineeId"));
   const result = await approveTrainee(
     traineeId,

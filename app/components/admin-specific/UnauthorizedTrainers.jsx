@@ -5,7 +5,6 @@ import { limitDisplayedInteger } from "~/utils/stringUtils";
 export default function UnauthorizedTrainers() {
   const navigate = useNavigate();
   const trainersAwaitingApproval = useLoaderData().unapprovedTrainers;
-  console.log("trainersAwaitingApproval", trainersAwaitingApproval);
 
   return (
     <div className="flex justify-between items-center">

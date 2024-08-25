@@ -30,7 +30,6 @@ export async function action({ request }) {
   const videoUrl = String(formData.get("videoUrl"));
   const isPrivate = Boolean(formData.get("isPrivate"));
   const userId = Number(formData.get("userId"));
-  console.log(name, description, videoUrl, isPrivate, userId);
   await createExercise(name, description, videoUrl, isPrivate, userId);
   return null;
 }

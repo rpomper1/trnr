@@ -72,7 +72,6 @@ export async function action({ request }) {
       traineeId,
       parseDateTimeFromTimezone(scheduledDate)
     );
-    console.log("addTraineeWorkout result: ", workout);
     trainingInstances.forEach(async (instance) => {
       const exerciseId = Number(instance.exerciseId);
       const sets = Number(instance.sets);
@@ -91,7 +90,6 @@ export async function action({ request }) {
     const traineeId = Number(formData.get("traineeId"));
     const workoutId = Number(formData.get("workoutId"));
     const trainingInstances = JSON.parse(formData.get("trainingInstances"));
-    console.log("completeWorkout: ", traineeId, workoutId, trainingInstances);
     await completeWorkout(workoutId);
     trainingInstances.forEach(async (instance) => {
       if (instance.modified) {

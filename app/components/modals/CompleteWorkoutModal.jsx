@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow
 } from "@nextui-org/react";
-import { Form, useLoaderData, useLocation } from "@remix-run/react";
+import { Form, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import { formatDate } from "~/utils/dateUtils";
 
@@ -27,11 +27,7 @@ export default function CompleteWorkoutModal({
   workout,
   path
 }) {
-  console.log("workout: ", workout);
   const exercises = useLoaderData().exercises;
-  const location = useLocation();
-  console.log(location);
-  console.log("exercises: ", exercises);
   const [workoutInstances, setWorkoutInstances] = useState([
     ...workout.data.map((item) => ({
       exerciseId: item.exerciseId,

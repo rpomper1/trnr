@@ -11,13 +11,6 @@ export async function action({ request }) {
   const repeatPassword = String(formData.get("repeatPassword"));
   const subscriptionPlan = String(formData.get("subscriptionPlan"));
 
-  console.log("firstName", firstName);
-  console.log("lastName", lastName);
-  console.log("email", email);
-  console.log("password", password);
-  console.log("repeatPassword", repeatPassword);
-  console.log("subscriptionPlan", subscriptionPlan);
-
   const passwordHash = bcrypt.hashSync(password, 10);
   const user = await createUser(
     firstName,
@@ -27,9 +20,7 @@ export async function action({ request }) {
     "Trainer",
     false
   );
-  console.log("user", user);
   const trainer = await createTrainer(user.id, subscriptionPlan);
-  console.log("trainer", trainer);
   return redirect("/request-completed");
 }
 const SignupTrainer = () => {

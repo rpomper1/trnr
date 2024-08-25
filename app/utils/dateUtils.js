@@ -9,6 +9,5 @@ export function parseDateTimeFromTimezone(datetime) {
   const datetimePart = datetime.split("[")[0];
   const date = new Date(datetimePart);
   const isoString = date.toISOString();
-  console.log("isoString", isoString);
   return isoString;
 }

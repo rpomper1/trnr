@@ -9,10 +9,8 @@ export async function loader({ request }) {
   const trainerId = url.searchParams.get("trainerId");
   try {
     const trainer = await getTrainer(parseInt(trainerId));
-    console.log("trainer: ", trainer);
     return { trainer: trainer[0] };
   } catch (error) {
-    console.error(error);
     return { trainer: null, error: error.message };
   }
 }
@@ -59,13 +57,11 @@ export async function action({ request }) {
     macros.targetCarbs,
     trainerId
   );
-  console.log("trainee", trainee);
   return redirect("/request-completed");
 }
 const SignupTrainee = () => {
   const trainer = useLoaderData().trainer;
   const error = useLoaderData().error;
-  console.log("trainer: ", trainer);
 
   return (
     <div className="flex justify-center items-center min-h-screen">
